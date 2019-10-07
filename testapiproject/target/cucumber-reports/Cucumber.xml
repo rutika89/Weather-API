@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="1" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="3" time="11.297307">
+<testcase classname="Weather API Test" name="Verify API Key error message" time="5.997641">
+<system-out><![CDATA[When I try to register a station without an API key.........................passed
+Then I get error message in the response as "Invalid API key. Please see http://openweathermap.org/faq#error401 for more info.".passed
+And status code is "401"....................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Weather API Test" name="Verify error message station not found" time="1.325845">
+<system-out><![CDATA[When I try to delete a station which is already deleted.....................passed
+Then I get error message in the response as "Station not found".............passed
+And status code is "404"....................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Weather API Test" name="Register two stations and verify that it is successful" time="3.973821">
+<failure message="java.lang.AssertionError: expected:&lt;201&gt; but was:&lt;404&gt;&#13;&#10;&#9;at org.junit.Assert.fail(Assert.java:88)&#13;&#10;&#9;at org.junit.Assert.failNotEquals(Assert.java:834)&#13;&#10;&#9;at org.junit.Assert.assertEquals(Assert.java:645)&#13;&#10;&#9;at org.junit.Assert.assertEquals(Assert.java:631)&#13;&#10;&#9;at stepdefinitions.WeatherAPIStepDefinition.verifyStatusCode(WeatherAPIStepDefinition.java:43)&#13;&#10;&#9;at stepdefinitions.WeatherAPIStepDefinition.registerStation(WeatherAPIStepDefinition.java:70)&#13;&#10;&#9;at ✽.When I register below stations the code is 201(WeatherAPI.feature:18)&#13;&#10;"><![CDATA[When I register below stations the code is 201..............................failed
+
+StackTrace:
+java.lang.AssertionError: expected:<201> but was:<404>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at stepdefinitions.WeatherAPIStepDefinition.verifyStatusCode(WeatherAPIStepDefinition.java:43)
+	at stepdefinitions.WeatherAPIStepDefinition.registerStation(WeatherAPIStepDefinition.java:70)
+	at ✽.When I register below stations the code is 201(WeatherAPI.feature:18)
+]]></failure>
+</testcase>
+</testsuite>

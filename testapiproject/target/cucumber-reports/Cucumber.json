@@ -1,0 +1,234 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 5,
+        "name": "Verify API Key error message",
+        "description": "",
+        "id": "weather-api-test;verify-api-key-error-message",
+        "after": [
+          {
+            "result": {
+              "duration": 126500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDownClass()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 3761752000,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I try to register a station without an API key",
+            "match": {
+              "location": "WeatherAPIStepDefinition.registerStationWithoutKey()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2235572900,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I get error message in the response as \"Invalid API key. Please see http://openweathermap.org/faq#error401 for more info.\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Invalid API key. Please see http://openweathermap.org/faq#error401 for more info.",
+                  "offset": 40
+                }
+              ],
+              "location": "WeatherAPIStepDefinition.verifyInvalidKeyErrorMsg(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 189100,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "status code is \"401\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "401",
+                  "offset": 16
+                }
+              ],
+              "location": "WeatherAPIStepDefinition.verifyStatusCode(String)"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 4,
+            "name": "@APIKeyError"
+          }
+        ]
+      },
+      {
+        "line": 11,
+        "name": "Verify error message station not found",
+        "description": "",
+        "id": "weather-api-test;verify-error-message-station-not-found",
+        "after": [
+          {
+            "result": {
+              "duration": 47500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDownClass()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 1298878600,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I try to delete a station which is already deleted",
+            "match": {
+              "location": "WeatherAPIStepDefinition.deleteNonExistentStation()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 26793600,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "I get error message in the response as \"Station not found\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Station not found",
+                  "offset": 40
+                }
+              ],
+              "location": "WeatherAPIStepDefinition.verifyInvalidKeyErrorMsg(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 125100,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "status code is \"404\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "404",
+                  "offset": 16
+                }
+              ],
+              "location": "WeatherAPIStepDefinition.verifyStatusCode(String)"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 10,
+            "name": "@StationNotFound"
+          }
+        ]
+      },
+      {
+        "line": 17,
+        "name": "Register two stations and verify that it is successful",
+        "description": "",
+        "id": "weather-api-test;register-two-stations-and-verify-that-it-is-successful",
+        "after": [
+          {
+            "result": {
+              "duration": 49000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDownClass()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 3973772000,
+              "error_message": "java.lang.AssertionError: expected:\u003c201\u003e but was:\u003c404\u003e\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\r\n\tat org.junit.Assert.assertEquals(Assert.java:645)\r\n\tat org.junit.Assert.assertEquals(Assert.java:631)\r\n\tat stepdefinitions.WeatherAPIStepDefinition.verifyStatusCode(WeatherAPIStepDefinition.java:43)\r\n\tat stepdefinitions.WeatherAPIStepDefinition.registerStation(WeatherAPIStepDefinition.java:70)\r\n\tat ✽.When I register below stations the code is 201(WeatherAPI.feature:18)\r\n",
+              "status": "failed"
+            },
+            "line": 18,
+            "name": "I register below stations the code is 201",
+            "match": {
+              "location": "WeatherAPIStepDefinition.registerStation(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "external_id",
+                  "name",
+                  "latitude",
+                  "longitude",
+                  "altitude"
+                ],
+                "line": 19
+              },
+              {
+                "cells": [
+                  "DEMO_TEST001",
+                  "Team Demo Test Station 001",
+                  "33.33",
+                  "-122.43",
+                  "222"
+                ],
+                "line": 20
+              },
+              {
+                "cells": [
+                  "DEMO_TEST001",
+                  "Team Demo Test Station 001",
+                  "33.33",
+                  "-122.43",
+                  "222"
+                ],
+                "line": 21
+              }
+            ],
+            "keyword": "When "
+          }
+        ],
+        "tags": [
+          {
+            "line": 16,
+            "name": "@RegisterStation"
+          }
+        ]
+      }
+    ],
+    "name": "Weather API Test",
+    "description": "Verify weather API functionality",
+    "id": "weather-api-test",
+    "keyword": "Feature",
+    "uri": "WeatherAPI.feature"
+  }
+]
